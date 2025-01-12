@@ -513,7 +513,7 @@ const CVBuilder = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-800/50 [&::-webkit-scrollbar-thumb]:bg-blue-600 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-blue-500">
       {SNOWFLAKE_POSITIONS.map((position, index) => (
         <Snowflake key={index} position={position} index={index} />
       ))}
@@ -526,7 +526,7 @@ const CVBuilder = () => {
         <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
       
-      <div className="container mx-auto px-4 py-24 relative z-10">
+      <div className="container mx-auto px-4 py-24 relative z-10 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-800/50 [&::-webkit-scrollbar-thumb]:bg-blue-600 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-blue-500">
         <motion.div 
           className="max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
@@ -665,7 +665,7 @@ const CVBuilder = () => {
                   <textarea
                     {...register('personalInfo.summary')}
                     placeholder="Kendinizi kısaca tanıtın..."
-                    className={`${inputClassName} h-32 resize-none`}
+                    className={`${inputClassName} h-32 resize-none [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-800/50 [&::-webkit-scrollbar-thumb]:bg-blue-600 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-blue-500`}
                   />
                 </motion.div>
               )}
@@ -733,7 +733,7 @@ const CVBuilder = () => {
                       <textarea
                         {...register(`education.${index}.activities`)}
                         placeholder="Aktiviteler ve başarılar..."
-                        className={`${inputClassName} h-32 resize-none`}
+                        className={`${inputClassName} h-32 resize-none [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-800/50 [&::-webkit-scrollbar-thumb]:bg-blue-600 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-blue-500`}
                       />
                     </motion.div>
                   ))}
@@ -817,12 +817,12 @@ const CVBuilder = () => {
                       <textarea
                         {...register(`experience.${index}.description`)}
                         placeholder="İş tanımı ve sorumluluklar..."
-                        className={`${inputClassName} h-32 resize-none`}
+                        className={`${inputClassName} h-32 resize-none [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-800/50 [&::-webkit-scrollbar-thumb]:bg-blue-600 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-blue-500`}
                       />
                       <textarea
                         {...register(`experience.${index}.achievements`)}
                         placeholder="Başarılar ve projeler..."
-                        className={`${inputClassName} h-32 resize-none`}
+                        className={`${inputClassName} h-32 resize-none [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-800/50 [&::-webkit-scrollbar-thumb]:bg-blue-600 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-blue-500`}
                       />
                     </motion.div>
                   ))}
