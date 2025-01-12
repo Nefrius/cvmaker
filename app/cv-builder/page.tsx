@@ -254,9 +254,10 @@ const Navbar = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 flex items-center gap-2"
           >
-            <Link href="/" className="text-white text-xl font-bold">CV Maker</Link>
+            <img src="/artuno.png" alt="Artuno Logo" className="h-8 w-auto" />
+            <Link href="/" className="text-white text-xl font-bold">Artuno-CV</Link>
           </motion.div>
           
           <div className="hidden md:block">
