@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import { useForm, useFieldArray } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -185,41 +185,31 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>
 
-// Mouse trail efekti için
-const MouseTrail = () => {
-  const [trails, setTrails] = useState<{ x: number; y: number; id: string }[]>([])
-  
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const newTrail = {
-        x: e.clientX,
-        y: e.clientY,
-        id: `${Date.now()}-${Math.random()}`
-      }
-      setTrails(prev => [...prev, newTrail].slice(-20))
-    }
-    
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+// Sabit kar tanesi pozisyonları
+const SNOWFLAKE_POSITIONS = [
+  10, 20, 30, 40, 50, 60, 70, 80, 90,
+  15, 25, 35, 45, 55, 65, 75, 85, 95,
+  5, 15, 25, 35, 45, 55, 65, 75, 85, 95, 100
+];
 
+// Kar tanesi komponenti
+const Snowflake = ({ position, index }: { position: number, index: number }) => {
   return (
-    <>
-      {trails.map((trail) => (
-        <motion.div
-          key={trail.id}
-          className="fixed w-2 h-2 bg-blue-500 rounded-full pointer-events-none"
-          initial={{ opacity: 0.8, scale: 1 }}
-          animate={{
-            opacity: 0,
-            scale: 0,
-            x: trail.x - 4,
-            y: trail.y - 4,
-          }}
-          transition={{ duration: 1 }}
-        />
-      ))}
-    </>
+    <motion.div
+      className="absolute w-2 h-2 bg-white rounded-full opacity-70"
+      initial={{ x: `${position}vw`, y: -20 }}
+      animate={{
+        y: '100vh',
+        opacity: [0.7, 0.3, 0.7],
+        rotate: 360,
+      }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        delay: index * 0.2,
+        ease: 'linear',
+      }}
+    />
   )
 }
 
@@ -524,7 +514,9 @@ const CVBuilder = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden">
-      <MouseTrail />
+      {SNOWFLAKE_POSITIONS.map((position, index) => (
+        <Snowflake key={index} position={position} index={index} />
+      ))}
       <Navbar />
       
       {/* Arkaplan efektleri */}
